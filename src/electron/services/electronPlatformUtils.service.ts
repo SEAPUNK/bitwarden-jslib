@@ -17,6 +17,7 @@ import { PlatformUtilsService } from '../../abstractions/platformUtils.service';
 import { StorageService } from '../../abstractions/storage.service';
 
 import { ElectronConstants } from '../electronConstants';
+import { GlobalShortcuts } from './electronGlobalShortcuts.service';
 
 export class ElectronPlatformUtilsService implements PlatformUtilsService {
     identityClientId: string;
@@ -204,5 +205,9 @@ export class ElectronPlatformUtilsService implements PlatformUtilsService {
 
     supportsSecureStorage(): boolean {
         return true;
+    }
+
+    registerGlobalShortcuts(globalShortcuts: GlobalShortcuts): void {
+        ipcRenderer.invoke('registerGlobalShortcuts', globalShortcuts);
     }
 }

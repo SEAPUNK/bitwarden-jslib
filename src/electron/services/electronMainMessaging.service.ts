@@ -4,9 +4,10 @@ import { MessagingService } from '../../abstractions/messaging.service';
 import { RendererMenuItem } from '../utils';
 
 import { WindowMain } from '../window.main';
+import { ElectronGlobalShortcutsService, GlobalShortcuts } from './electronGlobalShortcuts.service';
 
 export class ElectronMainMessagingService implements MessagingService {
-    constructor(private windowMain: WindowMain, private onMessage: (message: any) => void) {
+    constructor(private windowMain: WindowMain, private globalShortcutsService: ElectronGlobalShortcutsService, private onMessage: (message: any) => void) {
         ipcMain.handle('appVersion', () => {
             return app.getVersion();
         });
@@ -46,6 +47,10 @@ export class ElectronMainMessagingService implements MessagingService {
                     resolve(-1);
                 }});
             });
+        });
+
+        ipcMain.handle('registerGlobalShortcuts', (event, globalShortcuts: GlobalShortcuts) => {
+            this.globalShortcutsService.registerShortcuts(globalShortcuts);
         });
 
         nativeTheme.on('updated', () => {

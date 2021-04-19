@@ -36,4 +36,5 @@ export abstract class PlatformUtilsService {
     getDefaultSystemTheme: () => Promise<'light' | 'dark'>;
     onDefaultSystemThemeChange: (callback: ((theme: 'light' | 'dark') => unknown)) => unknown;
     supportsSecureStorage: () => boolean;
+    registerGlobalShortcuts: (globalShortcuts: any) => void;
 }

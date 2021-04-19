@@ -10,4 +10,7 @@ export class ElectronConstants {
     static readonly enableBrowserIntegrationFingerprint: string = 'enableBrowserIntegrationFingerprint';
     static readonly alwaysShowDock: string = 'alwaysShowDock';
     static readonly openAtLogin: string = 'openAtLogin';
+    static readonly globalShortcuts: string = 'globalShortcuts';
+    static readonly globalShortcutOpenWindow: string = 'openWindow';
+    static readonly globalShortcutOpenPasswordGenerator: string = 'openPasswordGenerator';
 }
